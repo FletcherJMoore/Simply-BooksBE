@@ -1,1 +1,4 @@
 # Simply-BooksBE
+
+<h3>Simply Books is a storefront for users to buy and sell their books</h3>
+<h4>Simply Books Features Include:</h4>
