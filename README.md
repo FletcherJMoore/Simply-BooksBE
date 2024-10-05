@@ -7,3 +7,8 @@
 <ul>Posting a new book</ul>
 <ul>Updating a new book</ul>
 <ul>And Deleting a new book</ul>
+<ul>Viewing All Authors</ul>
+<ul>View a Author details by the authorsId</ul>
+<ul>Posting a new author</ul>
+<ul>Updating a new author</ul>
+<ul>And Deleting a new author</ul>
