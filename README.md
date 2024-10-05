@@ -12,3 +12,7 @@
 <ul>Posting a new author</ul>
 <ul>Updating a new author</ul>
 <ul>And Deleting a new author</ul>
+
+<h4>Feel free to test these API's via Postman:</h4>
+
+<h4>Here is a video walkthrough of these API's being tested via Swagger</h4>
