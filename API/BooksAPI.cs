@@ -16,31 +16,35 @@ namespace Simply_Books_BE.API
                     Image = b.Image,
                     Price = b.Price,
                     Sale = b.Sale,
-                    Author_Id = b.AuthorId,
+                    AuthorId = b.AuthorId,
                     Uid = b.Uid,
                     Description = b.Description,
                 });
             });
 
-            // GET BOOK DETAILS AND ITS AUTHORS
-            /* app.MapGet("/books/{bookId}", (SimplyBooksDbContext db, int bookId) =>
-             {
-                 return db.Books
-                   .Where(b => b.Id == bookId)
-                   .Include(b => b.Authors)
-                   .Select(b => new
-                   {
-                       b.Id,
-                       b.Title,
-                       b.AuthorId,
-                       b.Uid,
-                       b.Description,
-                       b.Price,
-                       b.Sale,
-                   });
-             });*/
+            // GET ALL BOOKS BY USER UID
+            app.MapGet("/api/books", (SimplyBooksDbContext db, string Uid) =>
+            {
+                var books = db.Books
+                    .Where(b => b.Uid == Uid)
+                    .Select(b => new
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Image = b.Image,
+                        Price = b.Price,
+                        Sale = b.Sale,
+                        AuthorId = b.AuthorId,
+                        Uid = b.Uid,
+                        Description = b.Description,
+                    })
+                    .ToList();
 
-            app.MapGet("/books/{bookId}", (SimplyBooksDbContext db, int bookId, string Uid) =>
+                return books;
+            });
+
+            // GET BOOK DETAILS AND AUTHOR
+            app.MapGet("/books/{bookId}", (SimplyBooksDbContext db, int bookId) =>
             {
                 Book? book = db.Books
                 .Include(b => b.Author)
@@ -48,11 +52,7 @@ namespace Simply_Books_BE.API
 
                 if (book == null)
                 {
-                    return Results.NotFound("Invalid Book Id");
-                }
-                if (book.Uid != Uid)
-                {
-                    return Results.StatusCode(403);
+                    return Results.NotFound("Book not found. Please enter a valid book Id");
                 }
 
                 return Results.Ok(new
@@ -79,7 +79,7 @@ namespace Simply_Books_BE.API
             {
                 db.Books.Add(book);
                 db.SaveChanges();
-                return Results.Created($"/artists/{book.Id}", book);
+                return Results.Created($"/books/{book.Id}", book);
             });
 
             //UPDATE BOOK BY ID
@@ -96,8 +96,9 @@ namespace Simply_Books_BE.API
                 bookToUpdate.Sale = book.Sale;
                 bookToUpdate.Description = book.Description;
                 bookToUpdate.AuthorId = book.AuthorId;
+
                 db.SaveChanges();
-                return Results.NoContent();
+                return Results.Ok(bookToUpdate);
             });
 
             //DELETE BOOK BY ID
