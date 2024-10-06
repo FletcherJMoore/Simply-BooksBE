@@ -14,5 +14,6 @@
 <ul>And Deleting a new author</ul>
 
 <h4>Feel free to test these API's via Postman:</h4>
+<link>https://rare-be.postman.co/workspace/My-Workspace~67c6f02b-dbf3-4703-8081-e64d64fbf53d/collection/32292165-41fa1188-a504-485b-8531-4e1e41d86817</link>
 
 <h4>Here is a video walkthrough of these API's being tested via Swagger</h4>
