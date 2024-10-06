@@ -43,7 +43,7 @@ namespace Simply_Books_BE.API
                 return books;
             });
 
-            // GET BOOK DETAILS AND ITS AUTHORS
+            // GET BOOK DETAILS AND AUTHOR
             app.MapGet("/books/{bookId}", (SimplyBooksDbContext db, int bookId) =>
             {
                 Book? book = db.Books
@@ -52,7 +52,7 @@ namespace Simply_Books_BE.API
 
                 if (book == null)
                 {
-                    return Results.NotFound("Invalid Book Id");
+                    return Results.NotFound("Book not found. Please enter a valid book Id");
                 }
 
                 return Results.Ok(new
@@ -63,10 +63,9 @@ namespace Simply_Books_BE.API
                     book.Image,
                     book.Price,
                     book.Sale,
-                    book.AuthorId,
                     Author = new
                     {
-                        book.Author.Email,
+                        book.Author.Id,
                         book.Author.First_Name,
                         book.Author.Last_Name,
                         book.Author.Image
@@ -84,7 +83,7 @@ namespace Simply_Books_BE.API
             });
 
             //UPDATE BOOK BY ID
-            app.MapPatch("/books/{bookId}", (SimplyBooksDbContext db, Book book, int bookId) =>
+            app.MapPut("/books/{bookId}", (SimplyBooksDbContext db, Book book, int bookId) =>
             {
                 Book bookToUpdate = db.Books.SingleOrDefault(book => book.Id == bookId);
                 if (bookToUpdate == null)
@@ -97,8 +96,9 @@ namespace Simply_Books_BE.API
                 bookToUpdate.Sale = book.Sale;
                 bookToUpdate.Description = book.Description;
                 bookToUpdate.AuthorId = book.AuthorId;
+
                 db.SaveChanges();
-                return Results.NoContent();
+                return Results.Ok(bookToUpdate);
             });
 
             //DELETE BOOK BY ID

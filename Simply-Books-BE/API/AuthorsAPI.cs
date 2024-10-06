@@ -9,7 +9,7 @@ namespace Simply_Books_BE.API
         public static void Map(WebApplication app)
         {
             // GET ALL AUTHORS
-            app.MapGet("/authors", (SimplyBooksDbContext db, string Uid) =>
+            app.MapGet("/authors", (SimplyBooksDbContext db) =>
             {
                 return db.Authors.Select(a => new
                 {
@@ -43,21 +43,16 @@ namespace Simply_Books_BE.API
                 return authors;
             });
 
-            // GETS AUTHOR DETAILS
-            app.MapGet("/authors/{authorId}", (SimplyBooksDbContext db, int authorId, string Uid) =>
+            // GET AUTHOR DETAILS AND ACCOCIATED BOOKS
+            app.MapGet("/authors/{authorId}", (SimplyBooksDbContext db, int authorId) =>
             {
-                Author? author = db.Authors
-                .Include(a => a.Books)
-                .SingleOrDefault(a => a.Id == authorId);
+                Author author = db.Authors
+                .Include(b => b.Books)
+                .SingleOrDefault(b => b.Id == authorId);
 
                 if (author == null)
                 {
-                    return Results.NotFound("Author Not Found");
-                }
-
-                if (author.Uid != Uid)
-                {
-                    return Results.StatusCode(403);
+                    return Results.NotFound("Author not found. Please enter a valid author Id");
                 }
 
                 return Results.Ok(new
@@ -65,28 +60,28 @@ namespace Simply_Books_BE.API
                     author.Id,
                     author.First_Name,
                     author.Last_Name,
-                    author.Email,
                     author.Image,
-                    author.Favorite,
-                    Books = author.Books.Select(b => new
+                    Books = author.Books.Select(book => new
                     {
-                        b.Id,
-                        b.Title,
-                        b.Image,
-                        b.Price,
-                        b.Sale
+                        book.Id,
+                        book.Title,
+                        book.Image,
+                        book.Description,
+                        book.Price,
+                        book.Sale,
+                        book.AuthorId,
+                        book.Uid,
                     }),
                 });
             });
 
-
-            //CREATE NEW AUTHOR
-            app.MapPost("/authors", (SimplyBooksDbContext db, Author author) =>
-            {
-                db.Authors.Add(author);
-                db.SaveChanges();
-                return Results.Created($"/artists/{author.Id}", author);
-            });
+                //CREATE NEW AUTHOR
+                app.MapPost("/authors", (SimplyBooksDbContext db, Author author) =>
+                {
+                    db.Authors.Add(author);
+                    db.SaveChanges();
+                    return Results.Created($"/author/{author.Id}", author);
+                });
 
                 //UPDATE AUTHOR BY ID
                 app.MapPut("/authors/{authorId}", (SimplyBooksDbContext db, Author author, int authorId) =>
@@ -102,7 +97,7 @@ namespace Simply_Books_BE.API
                     authorToUpdate.Favorite = author.Favorite;
                     authorToUpdate.Email = author.Email;
                     db.SaveChanges();
-                    return Results.NoContent();
+                    return Results.Ok(authorToUpdate);
                 });
 
                 //DELETE AUTHOR BY ID
@@ -117,7 +112,6 @@ namespace Simply_Books_BE.API
                     db.SaveChanges();
                     return Results.NoContent();
                 });
-
             }
           
     }
