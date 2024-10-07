@@ -17,3 +17,4 @@
 <link>https://rare-be.postman.co/workspace/My-Workspace~67c6f02b-dbf3-4703-8081-e64d64fbf53d/collection/32292165-41fa1188-a504-485b-8531-4e1e41d86817</link>
 
 <h4>Here is a video walkthrough of these API's being tested via Swagger</h4>
+<link>https://www.loom.com/share/e46cd9d3744c4e16bfc83af5d283d6f9?sid=2d1ec211-b0a8-4819-9efb-dd4798a784a1</link>
