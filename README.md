@@ -18,3 +18,20 @@
 
 <h4>Here is a video walkthrough of these API's being tested via Swagger</h4>
 <link>https://www.loom.com/share/e46cd9d3744c4e16bfc83af5d283d6f9?sid=2d1ec211-b0a8-4819-9efb-dd4798a784a1</link>
+
+<h3>API Calls Overview<h3>
+
+<h4>GET All Books</h4>
+<p>https://localhost:7055//books</p>
+<h5>Body</5>
+<h5>{
+    "id": 0,
+    "title": "string",
+    "image": "string",
+    "price": 0.00,
+    "sale": false,
+    "author_Id": 0,
+    "uid": "bQ8n51pkphNBlIlN5RPliCL1N7o2",
+    "description": "string"
+    },
+</h5>
