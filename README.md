@@ -55,11 +55,11 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - Description: Get all books
 - Example Request:
     ```bash
-    curl --location --request GET 'https://localhost:7055/books'
+    curl --location --request GET 'https://localhost:7055/books'\
     ```
 - Example Response:
     ```json
-     --header 'Content-Type: application/json' 
+     --header 'Content-Type: application/json' \
     --data-raw '{
         "id": 0,
     "title": "string",
@@ -77,11 +77,11 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - Description: Get all books that include Uid
 - Example Request:
     ```bash
-    curl --location --request POST 'https://localhost:7055/api/books' 
+    curl --location --request POST 'https://localhost:7055/api/books' \
     ```
     - Example Response:
     ```json
-    --header 'Content-Type: application/json' 
+    --header 'Content-Type: application/json' \
     --data-raw '
     {
     "id": 0,
@@ -92,8 +92,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "author_Id": 0,
     "uid": "string",
     "description": "string"
-    }
-    ]'
+    }'
     ```
 
 #### `POST /api/books`
@@ -101,6 +100,9 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - Example Request:
     ```bash
     curl --location --request POST 'https://localhost:7055/books' \
+    ```
+  - Example Response:
+    ```json
     --header 'Content-Type: application/json' \
     --data-raw '{
     "id": 0,
@@ -118,6 +120,9 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - Example Request:
     ```bash
     curl --location --request PATCH 'https://localhost:7055/books/{bookId}' \
+    ```
+  - Example Response:
+    ```json
     --header 'Content-Type: application/json' \
     --data-raw '{
     "id": 0,
@@ -130,5 +135,24 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "description": "string"
     },'
     ```
-
+#### `DELETE /books{bookId}`
+- Description: Delete a book by Id
+- Example Request:
+    ```bash
+    curl --location --request PATCH 'https://localhost:7055/books/{bookId}' \
+    ```
+  - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "id": 0,
+    "title": "string",
+    "image": "string",
+    "price": 0.00,
+    "sale": false,
+    "author_Id": 0,
+    "uid": "string",
+    "description": "string"
+    },'
+    ```
 (Include the rest of the CRUD operations for books and authors)
