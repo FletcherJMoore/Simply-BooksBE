@@ -69,7 +69,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "author_Id": 0,
     "uid": "string",
     "description": "string"
-      }
+      },'
     
     ```
     
@@ -77,7 +77,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - Description: Get all books that include Uid
 - Example Request:
     ```bash
-    curl --location --request POST 'https://localhost:7055/api/books' \
+    curl --location --request POST 'https://localhost:7055/api/books' 
     ```
     - Example Response:
     ```json
