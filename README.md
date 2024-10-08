@@ -29,12 +29,6 @@ Simply Books is a store front book store for users to purchase their favorite bo
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
 - [API Endpoints](#api-endpoints)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ---
 
@@ -49,7 +43,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-5.0)
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 
-#### API Calls included in the project!
+#### API Endpoints!
 
 ## Books API's
 
@@ -160,7 +154,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 
     ## Authors API's
 
-    #### `GET /books`
+    #### `GET /authors`
 - Description: Get all authors
 - Example Request:
     ```bash
