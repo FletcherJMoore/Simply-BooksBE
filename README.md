@@ -82,7 +82,8 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     - Example Response:
     ```json
     --header 'Content-Type: application/json' \
-    --data-raw '{
+    --data-raw '[
+    {
     "id": 0,
     "title": "string",
     "image": "string",
@@ -91,7 +92,8 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "author_Id": 0,
     "uid": "string",
     "description": "string"
-    },'
+    }
+    ]'
     ```
 
 #### `POST /api/books`
