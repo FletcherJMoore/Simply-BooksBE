@@ -50,7 +50,9 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 
 #### API Calls included in the project!
-  
+
+## Books API's
+
 #### `GET /books`
 - Description: Get all books
 - Example Request:
@@ -95,7 +97,7 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     }'
     ```
 
-#### `POST /api/books`
+#### `POST /books`
 - Description: Create a new book
 - Example Request:
     ```bash
@@ -155,4 +157,95 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "description": "string"
     },'
     ```
-(Include the rest of the CRUD operations for books and authors)
+
+    ## Authors API's
+
+    #### `GET /books`
+- Description: Get all authors
+- Example Request:
+    ```bash
+    curl --location --request GET 'https://localhost:7055/authors'\
+    ```
+- Example Response:
+    ```json
+     --header 'Content-Type: application/json' \
+    --data-raw '{
+        "id": 0,
+        "email": "string",
+        "first_Name": "string",
+        "last_Name": "string",
+        "image": "string"
+    },'
+    
+    ```
+    
+    #### `GET /api/authors`
+- Description: Get all authors that include Uid
+- Example Request:
+    ```bash
+    curl --location --request POST 'https://localhost:7055/api/authors' \
+    ```
+    - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+         "id": 0,
+        "email": "string",
+        "first_Name": "string",
+        "last_Name": "string",
+        "image": "string"
+    }'
+    ```
+
+#### `POST /authors`
+- Description: Create a new author
+- Example Request:
+    ```bash
+    curl --location --request POST 'https://localhost:7055/authors' \
+    ```
+  - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+       "id": 0,
+        "email": "string",
+        "first_Name": "string",
+        "last_Name": "string",
+        "image": "string"
+    },'
+    ```
+#### `PATCH /author{authorId}`
+- Description: Update a author by Id
+- Example Request:
+    ```bash
+    curl --location --request PATCH 'https://localhost:7055/authors/{authorId}' \
+    ```
+  - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+      "id": 0,
+      "email": "string",
+      "first_Name": "string",
+      "last_Name": "string",
+      "image": "string"
+    },'
+    ```
+#### `DELETE /authors{authorId}`
+- Description: Delete a author by Id
+- Example Request:
+    ```bash
+    curl --location --request PATCH 'https://localhost:7055/authors/{authorId}' \
+    ```
+  - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+      "id": 0,
+      "email": "string",
+      "first_Name": "string",
+      "last_Name": "string",
+      "image": "string"
+    },'
+    ```
+    
