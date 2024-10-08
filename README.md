@@ -59,8 +59,8 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     ```
 - Example Response:
     ```json
-    [
-      {
+     --header 'Content-Type: application/json' \
+    --data-raw '{
         "id": 0,
     "title": "string",
     "image": "string",
@@ -70,7 +70,28 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "uid": "string",
     "description": "string"
       }
-    ]
+    
+    ```
+    
+    #### `GET /api/books`
+- Description: Get all books that include Uid
+- Example Request:
+    ```bash
+    curl --location --request POST 'https://localhost:7055/api/books' \
+    ```
+    - Example Response:
+    ```json
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "id": 0,
+    "title": "string",
+    "image": "string",
+    "price": 0.00,
+    "sale": false,
+    "author_Id": 0,
+    "uid": "string",
+    "description": "string"
+    },'
     ```
 
 #### `POST /api/books`
@@ -90,11 +111,11 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "description": "string"
     },'
     ```
-#### `PATCH /books/{bookId}`
-- Description: Update a book
+#### `PATCH /books{bookId}`
+- Description: Update a book by Id
 - Example Request:
-      ```bash
-      curl --location --request PATCH 'https://localhost:7055/books/{bookId}' \
+    ```bash
+    curl --location --request PATCH 'https://localhost:7055/books/{bookId}' \
     --header 'Content-Type: application/json' \
     --data-raw '{
     "id": 0,
@@ -106,5 +127,6 @@ List of the major technologies, frameworks, or libraries used in the project. Fo
     "uid": "string",
     "description": "string"
     },'
+    ```
 
 (Include the rest of the CRUD operations for books and authors)
